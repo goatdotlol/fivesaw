@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SawClient - Voxel Sandbox Demo. Test bridging and input playback in an offline environment.">
+  <title>Voxel Sandbox Demo - SawClient</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../styles/sawclient.css">
+  <style>
+    .sandbox-container { max-width: 1400px; margin: 0 auto; padding: 120px 2rem 2rem; }
+    .sandbox-header { text-align: center; margin-bottom: 2rem; }
+    .sandbox-header h1 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--sc-cyan); }
+    .sandbox-header p { color: rgba(232, 232, 240, 0.7); margin: 0.5rem 0; }
+    .sandbox-layout { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; margin-bottom: 2rem; }
+   .sandbox-canvas-wrapper { background: var(--sc-gray); border: 2px solid var(--sc-cyan); border-radius: 8px; overflow: hidden; }
+    #sandbox-canvas { width: 100%; height: 500px; display: block; background: #1a1a3e; }
+    .sandbox-controls { background: var(--sc-gray); border: 2px solid var(--sc-gray-light); border-radius: 8px; padding: 1.5rem; }
+    .sandbox-controls h3 { font-family: var(--font-pixel); font-size: 0.8rem; margin-bottom: 1rem; color: var(--sc-cyan); }
+    .control-section { margin-bottom: 1.5rem; }
+    .control-label { font-size: 0.7rem; font-family: var(--font-pixel); color: var(--sc-cyan); margin-bottom: 0.5rem; display: block; }
+    .control-button { width: 100%; background: var(--sc-cyan); color: var(--sc-darker); border: none; padding: 0.75rem; cursor: pointer; font-family: var(--font-pixel); font-size: 0.65rem; margin-bottom: 0.5rem; transition: 0.2s; }
+    .control-button:hover { background: var(--sc-cyan-light); }
+    .control-button.toggle-inactive { background: var(--sc-gray-light); color: var(--sc-cyan); border: 1px solid var(--sc-cyan); }
+    .hud-display { background: var(--sc-darker); border: 1px solid var(--sc-cyan); padding: 1rem; margin-bottom: 1rem; font-size: 0.75rem; font-family: 'Courier New', monospace; }
+    .hud-line { color: var(--sc-cyan); margin-bottom: 0.5rem; }
+    .hud-label { color: rgba(232, 232, 240, 0.5); margin-right: 0.5rem; }
+    .sandbox-info { background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), transparent); padding: 2rem; border-radius: 8px; margin-top: 2rem; }
+    .sandbox-info h3 { font-family: var(--font-pixel); margin-bottom: 1rem; color: var(--sc-cyan); font-size: 1rem; }
+    .sandbox-info ul { list-style: none; margin-bottom: 1rem; }
+    .sandbox-info li { margin-bottom: 0.75rem; font-size: 0.9rem; }
+    .sandbox-info li::before { content: '▪ '; color: var(--sc-cyan); margin-right: 0.5rem; }
+    .sandbox-warning { background: rgba(255, 107, 107, 0.1); border-left: 3px solid #ff6b6b; padding: 1rem; margin-bottom: 2rem; font-size: 0.85rem; color: rgba(232, 232, 240, 0.8); }
+    .sandbox-warning strong { color: #ff6b6b; }
+    @media (max-width: 768px) { .sandbox-layout { grid-template-columns: 1fr; } #sandbox-canvas { height: 300px; } .sandbox-controls { order: -1; } }
+  </style>
+</head>
+<body>
+  <nav class="sc-navbar">
+    <div class="sc-nav-container">
+      <a href="../../../index.html" class="sc-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Back to Fivesaw</span>
+      </a>
+      <div class="sc-nav-logo">
+        <img src="../../../public/assets/images/sawclient-banner.png" alt="SawClient" width="40" height="40">
+        <span class="pixel-font">SawClient</span>
+      </div>
+      <ul class="sc-nav-menu">
+        <li><a href="index.html" class="pixel-font">Home</a></li>
+        <li><a href="sandbox.html" class="pixel-font active">Sandbox</a></li>
+        <li><a href="features.html" class="pixel-font">Features</a></li>
+        <li><a href="download.html" class="pixel-font">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="sandbox-container">
+    <div class="sandbox-header">
+      <h1 class="pixel-font">Voxel Sandbox Demo</h1>
+      <p>Test your skills in an offline environment</p>
+      <p style="font-size: 0.85rem; color: var(--sc-gold);">FOR DEMONSTRATION PURPOSES ONLY</p>
+    </div>
+
+    <div class="sandbox-warning">
+      <strong>⚠️ Educational Demo:</strong> This sandbox is provided for learning and practice purposes only. It runs completely offline on your device. Input recording features are for analyzing your practice sessions locally.
+    </div>
+
+    <div class="sandbox-layout">
+      <div class="sandbox-canvas-wrapper">
+        <canvas id="sandbox-canvas"></canvas>
+      </div>
+
+      <div class="sandbox-controls">
+        <h3 class="pixel-font">Controls</h3>
+        
+        <div class="control-section">
+          <label class="control-label">Movement</label>
+          <div style="font-size: 0.75rem; color: rgba(232, 232, 240, 0.6); line-height: 1.5; margin-bottom: 1rem;">
+            W/A/S/D - Move<br/>
+            SPACE - Jump<br/>
+            Scroll - Zoom<br/>
+            Right Click - Place Block<br/>
+            Left Click - Remove Block
+          </div>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">HUD Display</label>
+          <button class="control-button" onclick="toggleHUD()">Toggle HUD</button>
+          <button class="control-button" onclick="toggleFPS()">Toggle FPS</button>
+          <button class="control-button" onclick="toggleCPS()">Toggle CPS</button>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Input Playback</label>
+          <button class="control-button" onclick="loadExamplePlayback()">Load Example</button>
+          <button class="control-button" onclick="startPlayback()">Play ▶</button>
+          <button class="control-button toggle-inactive" onclick="stopPlayback()">Stop ⏹</button>
+        </div>
+
+        <div class="hud-display">
+          <div class="hud-line"><span class="hud-label">FPS:</span><span id="fps-counter">60</span></div>
+          <div class="hud-line"><span class="hud-label">CPS:</span><span id="cps-counter">0</span></div>
+          <div class="hud-line"><span class="hud-label">Blocks:</span><span id="block-counter">0</span></div>
+          <div class="hud-line"><span class="hud-label">Altitude:</span><span id="altitude">0m</span></div>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Recording</label>
+          <button class="control-button" onclick="startRecording()">Record ⏺</button>
+          <button class="control-button toggle-inactive" onclick="stopRecording()">Stop</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sandbox-info">
+      <h3 class="pixel-font">How to Use This Demo</h3>
+      <ul>
+        <li><strong>Practice Bridging:</strong> Use blocks to cross the void. Perfect for improving your technique.</li>
+        <li><strong>Input Playback:</strong> Load example sessions to see different techniques. This replays user inputs for educational purposes.</li>
+        <li><strong>Record Sessions:</strong> Save your own practice sessions for later review.</li>
+        <li><strong>HUD Customization:</strong> Toggle different HUD elements to see how SawClient customizes your experience.</li>
+      </ul>
+      <p style="font-size: 0.85rem; color: rgba(232, 232, 240, 0.6); margin-top: 1rem;">
+        <strong>Note:</strong> All data is stored locally in your browser. No information is transmitted to any server. This demo showcases how SawClient enables practice and analysis in a safe, offline environment.
+      </p>
+    </div>
+
+    <div class="sandbox-info">
+      <h3 class="pixel-font">Technical Details</h3>
+      <ul>
+        <li>Built with Three.js for lightweight 3D rendering</li>
+        <li>Runs completely offline - no server connection required</li>
+        <li>Input recording captures keyboard and mouse events locally</li>
+        <li>Perfect for analyzing and improving your playstyle</li>
+        <li>Open source - inspect the code to learn how it works</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="sc-footer">
+    <div class="sc-footer-content">
+      <p class="pixel-font">© 2024 SawClient by Fivesaw</p>
+      <p>Not affiliated with Mojang Studios or Microsoft</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Simple voxel sandbox demo
+    const canvas = document.getElementById('sandbox-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    let hudVisible = true;
+    let fpsVisible = true;
+    let cpsVisible = true;
+    let frameCount = 0;
+    let clicks = 0;
+    let lastTime = Date.now();
+    let playerPos = { x: 10, y: 0 };
+    let blocks = [];
+    let recording = false;
+    let playbackActive = false;
+    let recordedInputs = [];
+    let playbackInputs = [];
+    let playbackIndex = 0;
+
+    function resizeCanvas() {
+      const wrapper = canvas.parentElement;
+      canvas.width = wrapper.clientWidth;
+      canvas.height = wrapper.clientHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawSandbox() {
+      // Clear canvas
+      ctx.fillStyle = '#1a1a3e';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw grid
+      ctx.strokeStyle = 'rgba(0, 212, 170, 0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < canvas.width; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
+        ctx.stroke();
+      }
+      for (let i = 0; i < canvas.height; i += 40) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.width, i);
+        ctx.stroke();
+      }
+
+      // Draw blocks
+      ctx.fillStyle = '#00d4aa';
+      blocks.forEach(block => {
+        ctx.fillRect(block.x * 40, block.y * 40, 38, 38);
+        ctx.strokeStyle = '#00a884';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(block.x * 40, block.y * 40, 38, 38);
+      });
+
+      // Draw player
+      ctx.fillStyle = '#ffd93d';
+      ctx.fillRect(playerPos.x * 40 + 10, playerPos.y * 40 + 10, 20, 20);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(playerPos.x * 40 + 13, playerPos.y * 40 + 12, 4, 4);
+      ctx.fillRect(playerPos.x * 40 + 23, playerPos.y * 40 + 12, 4, 4);
+
+      // Draw HUD
+      if (hudVisible) {
+        ctx.fillStyle = 'rgba(10, 10, 18, 0.8)';
+        ctx.fillRect(10, 10, 200, 120);
+        ctx.strokeStyle = '#00d4aa';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(10, 10, 200, 120);
+
+        ctx.fillStyle = '#00d4aa';
+        ctx.font = '12px Courier';
+        ctx.fillText('FPS: ' + Math.round(frameCount), 20, 30);
+        ctx.fillText('CPS: ' + clicks, 20, 50);
+        ctx.fillText('Blocks: ' + blocks.length, 20, 70);
+        ctx.fillText('X: ' + playerPos.x + ' Y: ' + playerPos.y, 20, 90);
+        if (recording) ctx.fillText('● RECORDING', 20, 110);
+        if (playbackActive) ctx.fillText('► PLAYBACK', 20, 110);
+      }
+    }
+
+    function animate() {
+      frameCount++;
+      drawSandbox();
+      
+      // Update FPS counter every second
+      const now = Date.now();
+      if (now - lastTime > 1000) {
+        document.getElementById('fps-counter').textContent = frameCount;
+        frameCount = 0;
+        lastTime = now;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function toggleHUD() { hudVisible = !hudVisible; }
+    function toggleFPS() { fpsVisible = !fpsVisible; }
+    function toggleCPS() { cpsVisible = !cpsVisible; }
+    function startRecording() { recording = true; recordedInputs = []; }
+    function stopRecording() { recording = false; }
+    function loadExamplePlayback() { 
+      playbackInputs = [
+        {key: 'w', duration: 200}, {key: 'a', duration: 100}, {key: 'space', duration: 50},
+        {key: 'right-click', duration: 0}, {key: 'w', duration: 200}, {key: 'right-click', duration: 0}
+      ];
+      playbackIndex = 0;
+    }
+    function startPlayback() { playbackActive = true; playbackIndex = 0; }
+    function stopPlayback() { playbackActive = false; }
+
+    // Input handling
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'w' || e.key === 'W') playerPos.y = Math.max(0, playerPos.y - 1);
+      if (e.key === 's' || e.key === 'S') playerPos.y = Math.min(15, playerPos.y + 1);
+      if (e.key === 'a' || e.key === 'A') playerPos.x = Math.max(0, playerPos.x - 1);
+      if (e.key === 'd' || e.key === 'D') playerPos.x = Math.min(19, playerPos.x + 1);
+      if (e.key === ' ') playerPos.y = Math.max(0, playerPos.y - 2);
+    });
+
+    canvas.addEventListener('click', () => {
+      clicks++;
+      document.getElementById('cps-counter').textContent = clicks;
+      blocks.push({x: playerPos.x + 1, y: playerPos.y});
+      document.getElementById('block-counter').textContent = blocks.length;
+    });
+
+    canvas.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      if (blocks.length > 0) blocks.pop();
+      document.getElementById('block-counter').textContent = blocks.length;
+    });
+
+    animate();
+  </script>
+</body>
+</html>

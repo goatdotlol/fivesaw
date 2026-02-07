@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download SawClient - The pixel-perfect Minecraft client for Windows, macOS, and Linux.">
+  <title>Download SawClient</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../styles/sawclient.css">
+  <style>
+    .sc-download-section { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+    .sc-download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0; }
+    .sc-download-card { border: 2px solid var(--sc-gray-light); padding: 2rem; background: linear-gradient(135deg, rgba(0, 212, 170, 0.05), transparent); transition: 0.3s ease; position: relative; }
+    .sc-download-card:hover { border-color: var(--sc-cyan); transform: translateY(-5px); }
+    .sc-download-card.recommended::before { content: 'RECOMMENDED'; position: absolute; top: -12px; left: 20px; background: var(--sc-gold); color: var(--sc-darker); padding: 0.25rem 0.75rem; font-family: var(--font-pixel); font-size: 0.5rem; white-space: nowrap; }
+    .sc-os-icon { font-size: 3rem; margin-bottom: 1rem; color: var(--sc-cyan); }
+    .sc-os-icon svg { width: 60px; height: 60px; }
+    .sc-download-card h3 { font-family: var(--font-pixel); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .sc-download-card p { font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--sc-white); }
+    .sc-download-link { display: block; background: var(--sc-cyan); color: var(--sc-darker); padding: 0.75rem 1.5rem; text-decoration: none; font-family: var(--font-pixel); font-size: 0.6rem; margin-bottom: 1rem; transition: 0.3s ease; text-align: center; }
+    .sc-download-link:hover { background: var(--sc-cyan-light); transform: scale(1.02); }
+    .file-info { font-size: 0.75rem; color: var(--sc-gray-light); margin: 0.5rem 0; word-break: break-all; }
+    .sc-checksums { background: var(--sc-gray); padding: 2rem; margin: 2rem 0; border-left: 4px solid var(--sc-cyan); }
+    .sc-checksums h3 { font-family: var(--font-pixel); margin-bottom: 1rem; }
+    .checksum-item { margin-bottom: 1.5rem; word-break: break-all; }
+    .checksum-item code { display: block; background: var(--sc-darker); padding: 0.75rem; margin-top: 0.5rem; font-size: 0.65rem; color: var(--sc-cyan); font-family: 'Courier New', monospace; }
+    .sc-requirements { background: var(--sc-gray); padding: 1.5rem; margin: 2rem 0; }
+    .sc-requirements h3 { font-family: var(--font-pixel); margin-bottom: 1rem; color: var(--sc-cyan); }
+    .req-list { list-style: none; }
+    .req-list li { padding: 0.5rem 0; font-size: 0.9rem; }
+    .req-list li::before { content: '▪ '; color: var(--sc-cyan); margin-right: 0.5rem; }
+    .sc-installation-guide { margin: 2rem 0; }
+    .guide-section { margin-bottom: 2rem; }
+    .guide-section h3 { font-family: var(--font-pixel); color: var(--sc-cyan); margin-bottom: 1rem; font-size: 1rem; }
+    .guide-section ol { margin-left: 1.5rem; }
+    .guide-section li { margin-bottom: 0.75rem; line-height: 1.6; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <nav class="sc-navbar">
+    <div class="sc-nav-container">
+      <a href="../../../index.html" class="sc-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Back to Fivesaw</span>
+      </a>
+      <div class="sc-nav-logo">
+        <img src="../../../public/assets/images/sawclient-banner.png" alt="SawClient" width="40" height="40">
+        <span class="pixel-font">SawClient</span>
+      </div>
+      <ul class="sc-nav-menu">
+        <li><a href="index.html" class="pixel-font">Home</a></li>
+        <li><a href="features.html" class="pixel-font">Features</a></li>
+        <li><a href="download.html" class="pixel-font active">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="sc-download-hero">
+    <h1 class="pixel-font">Download SawClient</h1>
+    <p>Choose your platform and start playing with the best Minecraft client experience.</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--sc-gray-light);">Version 1.5.2 • Compatible with Minecraft 1.8.9 - 1.20.x</p>
+  </section>
+
+  <div class="sc-download-section">
+    <div class="sc-download-grid">
+      <div class="sc-download-card recommended">
+        <div class="sc-os-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+        </div>
+        <h3>Windows</h3>
+        <p>For Windows 10 and Windows 11. Supports both 32-bit and 64-bit architectures.</p>
+        <a href="#" class="sc-download-link">Download (128 MB)</a>
+        <div class="file-info">
+          <strong>sawclient-1.5.2-windows.exe</strong><br/>
+          SHA256: a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
+        </div>
+      </div>
+
+      <div class="sc-download-card">
+        <div class="sc-os-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.71L12.41 13.41.71 25.11c.95.95 2.05.67 3.01.67h15.58c1.65-.01 3.66-.9 4.59-3.05l-6.18-6.18zM19 2h-8.5l-1-1h-9c-1.1 0-2 .9-2 2v14c0 .5.37 1.02.75 1.07L14.5 6"/></svg>
+        </div>
+        <h3>macOS</h3>
+        <p>For Mac OS 10.12 (Sierra) and later. M1/M2/M3 Apple Silicon fully supported.</p>
+        <a href="#" class="sc-download-link">Download (115 MB)</a>
+        <div class="file-info">
+          <strong>sawclient-1.5.2-macos.dmg</strong><br/>
+          SHA256: b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1
+        </div>
+      </div>
+
+      <div class="sc-download-card">
+        <div class="sc-os-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+        <h3>Linux</h3>
+        <p>For Ubuntu 18.04+, Debian, Fedora, and other Linux distributions.</p>
+        <a href="#" class="sc-download-link">Download (110 MB)</a>
+        <div class="file-info">
+          <strong>sawclient-1.5.2-linux.tar.gz</strong><br/>
+          SHA256: c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2
+        </div>
+      </div>
+    </div>
+
+    <div class="sc-checksums">
+      <h3 class="pixel-font">SHA256 Checksums</h3>
+      <div class="checksum-item">
+        <strong>Windows:</strong>
+        <code>a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0</code>
+      </div>
+      <div class="checksum-item">
+        <strong>macOS:</strong>
+        <code>b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1</code>
+      </div>
+      <div class="checksum-item">
+        <strong>Linux:</strong>
+        <code>c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2</code>
+      </div>
+    </div>
+
+    <div class="sc-requirements">
+      <h3 class="pixel-font">System Requirements</h3>
+      <ul class="req-list">
+        <li>Java 8 or higher (Java 17+ recommended)</li>
+        <li>At least 2GB of RAM available</li>
+        <li>100MB of free disk space</li>
+        <li>OpenGL 2.1 compatible graphics card</li>
+        <li>Minecraft Java Edition launcher</li>
+      </ul>
+    </div>
+
+    <div class="sc-installation-guide">
+      <div class="guide-section">
+        <h3 class="pixel-font">Installation Instructions</h3>
+        <ol>
+          <li>Download the appropriate installer for your operating system</li>
+          <li>Run the installer and follow the on-screen prompts</li>
+          <li>Launch Minecraft and select the SawClient profile</li>
+          <li>Enjoy! Press ESC + Settings to customize features</li>
+        </ol>
+      </div>
+
+      <div class="guide-section">
+        <h3 class="pixel-font">Configuration</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 1rem;">After installation, you can customize SawClient features:</p>
+        <ul class="req-list" style="margin-left: 0;">
+          <li>FPS Counter: Choose color, position, and update frequency</li>
+          <li>CPS Display: Toggle separate tracking and customize appearance</li>
+          <li>Input Recorder: Record and playback your inputs</li>
+          <li>Advanced settings: Optimize for your hardware</li>
+        </ul>
+      </div>
+
+      <div class="guide-section">
+        <h3 class="pixel-font">Troubleshooting</h3>
+        <ul class="req-list" style="margin-left: 0;">
+          <li><strong>Launcher Error:</strong> Update to the latest Java version</li>
+          <li><strong>Low FPS:</strong> Adjust render distance and disable intensive effects</li>
+          <li><strong>Display Issues:</strong> Update your graphics drivers</li>
+          <li><strong>Need Help?</strong> Join our Discord community for support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="sc-footer">
+    <div class="sc-footer-content">
+      <p class="pixel-font">© 2024 SawClient by Fivesaw</p>
+      <p>Not affiliated with Mojang Studios or Microsoft</p>
+    </div>
+  </footer>
+</body>
+</html>

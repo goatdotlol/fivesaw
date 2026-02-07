@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SawClient Features - Explore our pixel-perfect Minecraft client's powerful features.">
+  <title>SawClient Features</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../styles/sawclient.css">
+  <style>
+    .sc-features-hero { margin: 0; padding: 120px 2rem 60px; text-align: center; background: linear-gradient(135deg, rgba(0, 212, 170, 0.1), transparent); }
+    .sc-features-hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .sc-features-hero p { font-size: 1.1rem; color: var(--sc-cyan); }
+    .sc-features-list { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
+    .sc-feature-detail { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 3rem; align-items: start; }
+    .sc-feature-detail .icon { font-size: 2rem; }
+    .sc-feature-detail .icon svg { width: 80px; height: 80px; color: var(--sc-cyan); stroke-width: 1.5; }
+    .sc-feature-detail .content h3 { font-family: var(--font-pixel); font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .sc-feature-detail .content p { font-size: 0.95rem; line-height: 1.7; color: var(--sc-white); margin-bottom: 1rem; }
+    .feature-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0 2rem 0; }
+    .highlight { background: rgba(0, 212, 170, 0.1); padding: 0.75rem; border-left: 3px solid var(--sc-cyan); font-size: 0.85rem; }
+    .sc-feature-showcase { background: var(--sc-gray); padding: 2rem; margin: 2rem 0; border-radius: 4px; }
+    .sc-feature-showcase h4 { color: var(--sc-cyan); font-family: var(--font-pixel); font-size: 0.9rem; margin-bottom: 1rem; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fit,  minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .showcase-item { background: var(--sc-darker); padding: 1rem; border: 1px solid var(--sc-cyan); border-radius: 3px; text-align: center; font-size: 0.85rem; }
+    .sc-cta-final { background: linear-gradient(135deg, rgba(0, 212, 170, 0.2), transparent); padding: 3rem 2rem; text-align: center; margin: 3rem 0 0 0; }
+    .sc-cta-final h2 { font-family: var(--font-pixel); margin-bottom: 1rem; }
+    .sc-cta-final a { display: inline-block; background: var(--sc-cyan); color: var(--sc-darker); padding: 1rem 2rem; text-decoration: none; font-family: var(--font-pixel); font-size: 0.7rem; transition: 0.3s ease; margin-top: 1rem; }
+    .sc-cta-final a:hover { background: var(--sc-cyan-light); transform: scale(1.05); }
+    @media (max-width: 768px) { .sc-feature-detail { grid-template-columns: 1fr; } .feature-highlights { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="sc-navbar">
+    <div class="sc-nav-container">
+      <a href="../../../index.html" class="sc-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>Back to Fivesaw</span>
+      </a>
+      <div class="sc-nav-logo">
+        <img src="../../../public/assets/images/sawclient-banner.png" alt="SawClient" width="40" height="40">
+        <span class="pixel-font">SawClient</span>
+      </div>
+      <ul class="sc-nav-menu">
+        <li><a href="index.html" class="pixel-font">Home</a></li>
+        <li><a href="features.html" class="pixel-font active">Features</a></li>
+        <li><a href="download.html" class="pixel-font">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="sc-features-hero">
+    <h1 class="pixel-font">Features</h1>
+    <p>Everything you need for the ultimate Minecraft experience</p>
+  </section>
+
+  <div class="sc-features-list">
+    <!-- FPS Counter -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">FPS Counter</h3>
+        <p>Monitor your game's performance in real-time with our customizable FPS counter. The counter updates smoothly without impacting your frame rate, giving you accurate performance data at a glance.</p>
+        <div class="feature-highlights">
+          <div class="highlight">Always-on Display</div>
+          <div class="highlight">Customizable Position</div>
+          <div class="highlight">Color Themes</div>
+          <div class="highlight">Zero Overhead</div>
+        </div>
+        <div class="sc-feature-showcase">
+          <h4>Available Colors</h4>
+          <div class="showcase-grid">
+            <div class="showcase-item" style="border-color: #00d4aa;">Cyan</div>
+            <div class="showcase-item" style="border-color: #4ade80;">Green</div>
+            <div class="showcase-item" style="border-color: #ffd93d;">Gold</div>
+            <div class="showcase-item" style="border-color: #ff6b6b;">Red</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CPS Display -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">CPS Display</h3>
+        <p>Track your clicks per second with precision. Perfect for PvP players and bridge builders who want to optimize their clicking technique. Features a visual history graph and separate tracking for left and right clicks.</p>
+        <div class="feature-highlights">
+          <div class="highlight">Real-time CPS</div>
+          <div class="highlight">History Graph</div>
+          <div class="highlight">Peak Detection</div>
+          <div class="highlight">Separate Left/Right</div>
+        </div>
+        <div class="sc-feature-showcase">
+          <h4>CPS Performance Metrics</h4>
+          <div class="showcase-grid">
+            <div class="showcase-item">Current: 12 CPS</div>
+            <div class="showcase-item">Peak: 15 CPS</div>
+            <div class="showcase-item">Average: 11 CPS</div>
+            <div class="showcase-item">Total Clicks: 8,432</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input Recorder -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">Input Recorder</h3>
+        <p>Record and playback your inputs for practice and analysis. Whether you're perfecting your bridging technique or analyzing your PvP patterns, the input recorder helps you improve by letting you review your actions in detail.</p>
+        <div class="feature-highlights">
+          <div class="highlight">Easy Recording</div>
+          <div class="highlight">Smooth Playback</div>
+          <div class="highlight">Frame by Frame</div>
+          <div class="highlight">Export Recordings</div>
+        </div>
+        <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--sc-gray-light);"><strong>Note:</strong> Input recording is for local practice and analysis only. All recordings are stored locally on your device.</p>
+      </div>
+    </div>
+
+    <!-- ClickGUI -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6m4.22-10.22l4.24-4.24M6.34 17.66l-4.24 4.24M23 12h-6m-6 0H1m20.24 4.24l-4.24-4.24M6.34 6.34L2.1 2.1"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">ClickGUI</h3>
+        <p>Access all your settings with our intuitive in-game menu. Toggle features on and off, adjust colors and positions, and customize your experience without leaving the game. Clean, fast, and easy to use.</p>
+        <div class="feature-highlights">
+          <div class="highlight">In-Game Menu</div>
+          <div class="highlight">Toggle Features</div>
+          <div class="highlight">Customize Colors</div>
+          <div class="highlight">Position Control</div>
+        </div>
+        <div class="sc-feature-showcase">
+          <h4>Menu Options</h4>
+          <div class="showcase-grid">
+            <div class="showcase-item">✓ Display</div>
+            <div class="showcase-item">✓ Performance</div>
+            <div class="showcase-item">✓ Keybinds</div>
+            <div class="showcase-item">✓ Advanced</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HUD Customization -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">HUD Customization</h3>
+        <p>Customize every aspect of your HUD to match your playstyle. Move elements around, change colors, adjust transparency, and more. Your perfect Minecraft experience is just a few clicks away.</p>
+        <div class="feature-highlights">
+          <div class="highlight">Drag & Drop</div>
+          <div class="highlight">Transparency</div>
+          <div class="highlight">Scale Control</div>
+          <div class="highlight">Presets</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance Monitoring -->
+    <div class="sc-feature-detail">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div class="content">
+        <h3 class="pixel-font">Performance Monitoring</h3>
+        <p>Advanced performance metrics to help you understand and optimize your gaming experience. Monitor memory usage, render time, and entity count for detailed performance analysis.</p>
+        <div class="feature-highlights">
+          <div class="highlight">Memory Usage</div>
+          <div class="highlight">Render Time</div>
+          <div class="highlight">Entity Count</div>
+          <div class="highlight">Network Stats</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sc-cta-final">
+    <h2 class="pixel-font">Ready to Experience the Difference?</h2>
+    <p style="margin: 1rem 0; font-size: 1rem;">Join thousands of players with SawClient</p>
+    <a href="download.html" class="pixel-font">Download Now</a>
+  </section>
+
+  <footer class="sc-footer">
+    <div class="sc-footer-content">
+      <p class="pixel-font">© 2024 SawClient by Fivesaw</p>
+      <p>Not affiliated with Mojang Studios or Microsoft</p>
+    </div>
+  </footer>
+</body>
+</html>

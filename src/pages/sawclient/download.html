@@ -11,6 +11,200 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../../styles/sawclient.css">
+  <style>
+    .sc-download-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .sc-version-selector {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .version-btn {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--sc-cyan);
+      background: transparent;
+      color: var(--sc-cyan);
+      cursor: pointer;
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      transition: 0.3s ease;
+    }
+
+    .version-btn.active {
+      background: var(--sc-cyan);
+      color: var(--sc-darker);
+    }
+
+    .version-btn:hover {
+      background: var(--sc-cyan);
+      color: var(--sc-darker);
+    }
+
+    .sc-download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .sc-download-card {
+      border: 2px solid var(--sc-gray-light);
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(0, 212, 170, 0.05), transparent);
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    .sc-download-card:hover {
+      border-color: var(--sc-cyan);
+      transform: translateY(-5px);
+    }
+
+    .sc-download-card.recommended::before {
+      content: 'RECOMMENDED';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--sc-gold);
+      color: var(--sc-darker);
+      padding: 0.25rem 0.75rem;
+      font-family: var(--font-pixel);
+      font-size: 0.5rem;
+    }
+
+    .sc-os-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--sc-cyan);
+    }
+
+    .sc-os-icon svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    .sc-download-card h3 {
+      font-family: var(--font-pixel);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .sc-download-card p {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      color: var(--sc-white);
+    }
+
+    .sc-download-link {
+      display: inline-block;
+      background: var(--sc-cyan);
+      color: var(--sc-darker);
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-family: var(--font-pixel);
+      font-size: 0.6rem;
+      margin-bottom: 1rem;
+      transition: 0.3s ease;
+      width: 100%;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .sc-download-link:hover {
+      background: var(--sc-cyan-light);
+      transform: scale(1.05);
+    }
+
+    .file-info {
+      font-size: 0.75rem;
+      color: var(--sc-gray-light);
+      margin: 0.5rem 0;
+    }
+
+    .sc-checksums {
+      background: var(--sc-gray);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--sc-cyan);
+    }
+
+    .sc-checksums h3 {
+      font-family: var(--font-pixel);
+      margin-bottom: 1rem;
+    }
+
+    .checksum-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .checksum-item code {
+      display: block;
+      background: var(--sc-darker);
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      word-break: break-all;
+      font-size: 0.75rem;
+      color: var(--sc-cyan);
+      font-family: 'Courier New', monospace;
+    }
+
+    .sc-installation-guide {
+      margin: 2rem 0;
+    }
+
+    .guide-section {
+      margin-bottom: 2rem;
+    }
+
+    .guide-section h3 {
+      font-family: var(--font-pixel);
+      color: var(--sc-cyan);
+      margin-bottom: 1rem;
+    }
+
+    .guide-section ol {
+      margin-left: 1.5rem;
+    }
+
+    .guide-section li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .sc-requirements {
+      background: var(--sc-gray);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+
+    .sc-requirements h3 {
+      font-family: var(--font-pixel);
+      margin-bottom: 1rem;
+      color: var(--sc-cyan);
+    }
+
+    .req-list {
+      list-style: none;
+    }
+
+    .req-list li {
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .req-list li::before {
+      content: '▪ ';
+      color: var(--sc-cyan);
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -38,16 +232,25 @@
   <section class="sc-download-hero">
     <h1 class="pixel-font">Download SawClient</h1>
     <p>Choose your platform and start playing with the best Minecraft client experience.</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem; color: var(--sc-gray-light);">Version 1.5.2 • Compatible with Minecraft 1.8.9 - 1.20.x</p>
   </section>
 
-  <!-- Download Options -->
-  <div class="sc-download-grid">
-    <!-- Windows -->
-    <div class="sc-download-card recommended">
-      <div class="sc-os-icon">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
-        </svg>
+  <!-- Version Selector -->
+  <div class="sc-download-section">
+    <div class="sc-version-selector">
+      <button class="version-btn active" onclick="filterVersion('latest')">Latest (1.5.2)</button>
+      <button class="version-btn" onclick="filterVersion('lts')">LTS (1.4.5)</button>
+      <button class="version-btn" onclick="filterVersion('beta')">Beta (1.6.0)</button>
+    </div>
+
+    <!-- Download Options -->
+    <div class="sc-download-grid">
+      <!-- Windows -->
+      <div class="sc-download-card recommended">
+        <div class="sc-os-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+          </svg>
       </div>
       <h3 class="pixel-font">Windows</h3>
       <p class="version">v1.5.2</p>
