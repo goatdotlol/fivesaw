@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SawClient - A pixel-perfect Minecraft client with HUD enhancements, CPS counter, and input recording.">
+  <title>SawClient - Pixel-Perfect Minecraft Client</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../styles/sawclient.css">
+</head>
+<body>
+  <!-- SawClient Navigation -->
+  <nav class="sc-navbar">
+    <div class="sc-nav-container">
+      <a href="../../../index.html" class="sc-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Fivesaw</span>
+      </a>
+      <div class="sc-nav-logo">
+        <img src="../../../public/assets/images/sawclient-banner.png" alt="SawClient" width="40" height="40">
+        <span class="pixel-font">SawClient</span>
+      </div>
+      <ul class="sc-nav-menu">
+        <li><a href="index.html" class="pixel-font active">Home</a></li>
+        <li><a href="features.html" class="pixel-font">Features</a></li>
+        <li><a href="download.html" class="pixel-font">Download</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="sc-hero">
+    <div class="sc-hero-bg">
+      <canvas id="sc-hero-canvas"></canvas>
+    </div>
+    <div class="sc-hero-content">
+      <div class="sc-logo-large">
+        <img src="../../../public/assets/images/sawclient-banner.png" alt="SawClient" loading="eager" width="200" height="300">
+      </div>
+      <h1 class="pixel-font sc-title">SawClient</h1>
+      <p class="sc-tagline">The Pixel-Perfect Minecraft Client</p>
+      <p class="sc-version">v1.5.2 • For Minecraft 1.8.9 - 1.20.x</p>
+      <div class="sc-hero-buttons">
+        <a href="download.html" class="sc-btn primary pixel-font">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Download Now
+        </a>
+        <a href="features.html" class="sc-btn secondary pixel-font">Learn More</a>
+      </div>
+      <div class="sc-stats">
+        <div class="sc-stat">
+          <span class="sc-stat-value">50K+</span>
+          <span class="sc-stat-label">Downloads</span>
+        </div>
+        <div class="sc-stat">
+          <span class="sc-stat-value">4.8</span>
+          <span class="sc-stat-label">Rating</span>
+        </div>
+        <div class="sc-stat">
+          <span class="sc-stat-value">100%</span>
+          <span class="sc-stat-label">Free</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Preview -->
+  <section class="sc-features-preview">
+    <div class="sc-section-header">
+      <h2 class="pixel-font">Why SawClient?</h2>
+      <p>Built by players, for players</p>
+    </div>
+    <div class="sc-features-grid">
+      <div class="sc-feature-card">
+        <div class="sc-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="pixel-font">FPS Counter</h3>
+        <p>Real-time FPS display with customizable colors and position</p>
+      </div>
+      <div class="sc-feature-card">
+        <div class="sc-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3 class="pixel-font">CPS Display</h3>
+        <p>Track your clicks per second with history graph</p>
+      </div>
+      <div class="sc-feature-card">
+        <div class="sc-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+            <path d="M2 2l7.586 7.586"/>
+            <circle cx="11" cy="11" r="2"/>
+          </svg>
+        </div>
+        <h3 class="pixel-font">Input Recorder</h3>
+        <p>Record and playback your inputs for practice</p>
+      </div>
+      <div class="sc-feature-card">
+        <div class="sc-feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6m4.22-10.22l4.24-4.24M6.34 17.66l-4.24 4.24M23 12h-6m-6 0H1m20.24 4.24l-4.24-4.24M6.34 6.34L2.1 2.1"/>
+          </svg>
+        </div>
+        <h3 class="pixel-font">ClickGUI</h3>
+        <p>Intuitive in-game settings menu</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshot Showcase -->
+  <section class="sc-showcase">
+    <div class="sc-section-header">
+      <h2 class="pixel-font">See It In Action</h2>
+    </div>
+    <div class="sc-showcase-grid">
+      <div class="sc-showcase-item">
+        <img src="../../../public/assets/images/sawclient-hud.png" alt="SawClient HUD" loading="lazy">
+        <div class="sc-showcase-overlay">
+          <span class="pixel-font">HUD Display</span>
+        </div>
+      </div>
+      <div class="sc-showcase-item">
+        <img src="../../../public/assets/images/sawclient-terrain.png" alt="SawClient Terrain" loading="lazy">
+        <div class="sc-showcase-overlay">
+          <span class="pixel-font">Clean UI</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="sc-cta">
+    <div class="sc-cta-content">
+      <h2 class="pixel-font">Ready to Upgrade?</h2>
+      <p>Join thousands of players who have already made the switch</p>
+      <a href="download.html" class="sc-btn primary pixel-font">Download SawClient</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="sc-footer">
+    <div class="sc-footer-content">
+      <p class="pixel-font">© 2024 SawClient by Fivesaw</p>
+      <p>Not affiliated with Mojang Studios or Microsoft</p>
+    </div>
+  </footer>
+
+  <script src="../../js/sawclient.js"></script>
+</body>
+</html>

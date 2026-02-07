@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fivesaw - Minecraft content creator and developer. Creator of SawClient, a pixel-perfect Minecraft client.">
+  <meta name="keywords" content="Fivesaw, Minecraft, SawClient, gaming, content creator">
+  <meta name="author" content="Fivesaw">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Fivesaw - Minecraft Creator">
+  <meta property="og:description" content="Minecraft content creator and developer. Creator of SawClient.">
+  <meta property="og:type" content="website">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <title>Fivesaw - Minecraft Creator</title>
+  
+  <style>
+    /* Critical CSS inlined for performance */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --pixel-cyan: #00d4aa;
+      --pixel-cyan-dark: #00a884;
+      --pixel-dark: #0a0a12;
+      --pixel-darker: #050508;
+      --pixel-gray: #1a1a2e;
+      --pixel-gold: #ffd93d;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--pixel-darker);
+      color: #e8e8f0;
+      overflow-x: hidden;
+    }
+    
+    .pixel-font {
+      font-family: 'Press Start 2P', cursive;
+    }
+    
+    /* Loading screen */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--pixel-darker);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+    
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader-text {
+      font-family: 'Press Start 2P', cursive;
+      color: var(--pixel-cyan);
+      font-size: 1.5rem;
+      animation: pulse 1s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="src/styles/main.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="src/styles/main.css"></noscript>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loader">
+    <span class="loader-text">FIVESAW</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo pixel-font">FIVESAW</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link pixel-font">Home</a></li>
+        <li><a href="#projects" class="nav-link pixel-font">Projects</a></li>
+        <li><a href="#demo" class="nav-link pixel-font">3D Demo</a></li>
+        <li><a href="#contact" class="nav-link pixel-font">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <canvas id="hero-canvas" class="hero-canvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-avatar">
+        <img src="public/assets/images/fivesaw-avatar.png" alt="Fivesaw" loading="eager" width="200" height="200">
+      </div>
+      <h1 class="hero-title pixel-font">
+        <span class="glitch" data-text="FIVESAW">FIVESAW</span>
+      </h1>
+      <p class="hero-subtitle">Minecraft Content Creator & Developer</p>
+      <div class="hero-socials">
+        <a href="https://discord.gg/fivesaw" target="_blank" rel="noopener" class="social-btn" aria-label="Discord">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+        <a href="https://youtube.com/@goatdotlol" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+      <a href="#projects" class="hero-cta pixel-font">
+        <span>View Projects</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="section-header">
+      <h2 class="section-title pixel-font">Projects</h2>
+      <p class="section-subtitle">Things I've built</p>
+    </div>
+    
+    <div class="projects-grid">
+      <!-- SawClient Project -->
+      <article class="project-card featured">
+        <div class="project-image">
+          <img src="public/assets/images/sawclient-banner.png" alt="SawClient" loading="lazy" width="400" height="600">
+          <div class="project-overlay"></div>
+        </div>
+        <div class="project-content">
+          <span class="project-tag pixel-font">FEATURED</span>
+          <h3 class="project-title pixel-font">SawClient</h3>
+          <p class="project-description">A pixel-perfect Minecraft client with HUD enhancements, CPS counter, and input recording. Built for performance, designed for style.</p>
+          <div class="project-features">
+            <span class="feature-tag">FPS Counter</span>
+            <span class="feature-tag">CPS Display</span>
+            <span class="feature-tag">Input Recorder</span>
+          </div>
+          <div class="project-links">
+            <a href="src/pages/sawclient/index.html" class="project-btn primary pixel-font">Learn More</a>
+            <a href="src/pages/sawclient/download.html" class="project-btn secondary pixel-font">Download</a>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Placeholder for future projects -->
+      <article class="project-card coming-soon">
+        <div class="project-content">
+          <h3 class="project-title pixel-font">More Coming Soon</h3>
+          <p class="project-description">New projects are always in development. Stay tuned!</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 3D Demo Section -->
+  <section id="demo" class="demo-section">
+    <div class="section-header">
+      <h2 class="section-title pixel-font">3D Demo</h2>
+      <p class="section-subtitle">Interactive Three.js voxel environment</p>
+    </div>
+    <div class="demo-container">
+      <canvas id="three-canvas" class="three-canvas"></canvas>
+      <div class="demo-controls">
+        <p class="demo-hint">Click & drag to rotate • Scroll to zoom</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="section-header">
+      <h2 class="section-title pixel-font">Get In Touch</h2>
+      <p class="section-subtitle">Let's connect</p>
+    </div>
+    <div class="contact-content">
+      <div class="contact-links">
+        <a href="https://discord.gg/fivesaw" target="_blank" rel="noopener" class="contact-card">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+          <span class="pixel-font">Discord: fivesaw</span>
+        </a>
+        <a href="https://youtube.com/@goatdotlol" target="_blank" rel="noopener" class="contact-card">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span class="pixel-font">YouTube: @goatdotlol</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="pixel-font">© 2024 Fivesaw. Not affiliated with Mojang or Microsoft.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="src/js/main.js" type="module"></script>
+</body>
+</html>
